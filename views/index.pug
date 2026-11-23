@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", type="text/css" href="/styles/server.css")
+    title Recipe queue
+  body
+    h1 Recipe queue
+    p Paste a Facebook Reel or share link. It will be queued for import into Mealie.
+    if error
+      p.error= error
+    if duplicate
+      p That link was already in the queue, so it was not added again.
+    form(method="post" action="/submit")
+      input(type="url" name="url" placeholder="https://www.facebook.com/share/r/…" required)
+      button(type="submit") Queue recipe
+    h2 Queued links
+    if entries.length === 0
+      p No links queued yet.
+    else
+      ul
+        each entry in entries
+          li
+            strong= entry.status
+            |  — 
+            a(href=entry.url)= entry.url
+            |  (#{entry.submittedAt})
+            if entry.mealieSlug
+              |  — Mealie: #{entry.mealieSlug}
+            if entry.error
+              |  — #{entry.error}

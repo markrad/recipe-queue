@@ -1,0 +1,23 @@
+{
+    "dependencies": {
+        "express": "^4.21.2",
+        "pug": "^3.0.3",
+        "zod": "^4.6.7"
+    },
+    "description": "Simple form that queues Facebook Reel links for later import into Mealie",
+    "devDependencies": {
+        "@types/express": "^4.17.21",
+        "@types/node": "^22.0.0",
+        "@types/pug": "^2.0.10",
+        "typescript": "^5.6.0"
+    },
+    "name": "recipe-queue-server",
+    "private": true,
+    "scripts": {
+        "dev": "bun --watch src/server.ts",
+        "start": "bun run src/server.ts",
+        "typecheck": "tsc --noEmit"
+    },
+    "type": "module",
+    "version": "0.0.1"
+}

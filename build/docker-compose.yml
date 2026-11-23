@@ -1,0 +1,13 @@
+services:
+  recipe-queue:
+    build: .
+    container_name: recipe-queue
+    restart: unless-stopped
+    ports:
+      - "3010:3010"
+    environment:
+      - PORT=3010
+      - QUEUE_FILE=/app/data/queue.json
+      # QUEUE_TOKEN=change-me-if-you-use-the-API
+    volumes:
+      - ./data:/app/data
