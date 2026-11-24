@@ -40,4 +40,24 @@ describe("QueueFileManager", () => {
         expect(second.duplicate).toBe(true);
         expect(queue.queueContent).toHaveLength(1);
     });
+
+    it("serializes concurrent enqueues without losing entries or adding duplicates", async () => {
+        const duplicateUrl = "https://www.facebook.com/share/r/duplicate/";
+        const urls = [
+            duplicateUrl,
+            "https://www.facebook.com/share/r/first/",
+            duplicateUrl,
+            "https://www.facebook.com/share/r/second/",
+            duplicateUrl,
+        ];
+
+        const results = await Promise.all(urls.map((url) => queue.enqueue(url)));
+        const saved = JSON.parse(await readFile(queueFilePath, "utf8"));
+
+        expect(results.filter((result) => !result.duplicate)).toHaveLength(3);
+        expect(results.filter((result) => result.duplicate)).toHaveLength(2);
+        expect(queue.queueContent).toHaveLength(3);
+        expect(saved).toHaveLength(3);
+        expect(new Set(saved.map((entry: { url: string }) => entry.url)).size).toBe(3);
+    });
 });
