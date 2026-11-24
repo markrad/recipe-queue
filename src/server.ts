@@ -3,8 +3,10 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { QueueFileManager } from "./queue.ts";
 
+const DEFAULT_PORT = 3010;
+
 const app = express();
-const port = Number(process.env.PORT ?? 3010);
+const port = Number(process.env.PORT ?? DEFAULT_PORT);
 const queueToken = process.env.QUEUE_TOKEN ?? "";
 const queue = new QueueFileManager();
 

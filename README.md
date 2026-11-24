@@ -27,7 +27,7 @@ bun install
 bun run dev
 ```
 
-Then open http://localhost:3000
+Then open http://localhost:3010
 
 ## Run in Docker
 
@@ -35,8 +35,8 @@ Then open http://localhost:3000
 docker compose up --build -d
 ```
 
-Then open http://localhost:3000, and point your Cloudflare tunnel at
-`localhost:3000` on that host.
+Then open http://localhost:3010, and point your Cloudflare tunnel at
+`localhost:3010` on that host.
 
 ## Access protection
 
@@ -58,3 +58,5 @@ and report each verified import, including its Mealie slug, serving count,
 times, ingredient count, and instruction count. If a Reel needs a signed-in
 video check and a one-time code, that entry stays pending until you
 approve the code.
+
+You need to your AI to do this. Any AI should be fine. I used Muse since it seemed highly unlikely that Meta would ever block their own UI from Facebook.
