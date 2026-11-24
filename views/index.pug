@@ -22,11 +22,11 @@ html(lang="en")
       ul
         each entry in entries
           li
-            strong= entry.status
+            strong(class=entry.status === "failed" ? "error" : null)= entry.status
             |  — 
             a(href=entry.url)= entry.url
-            |  (#{entry.submittedAt})
+            div Submitted: #{entry.submittedAt}
             if entry.mealieSlug
-              |  — Mealie: #{entry.mealieSlug}
+              div Mealie: #{entry.mealieSlug}
             if entry.error
-              |  — #{entry.error}
+              div.error= entry.error
