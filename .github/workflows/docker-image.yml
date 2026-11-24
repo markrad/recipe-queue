@@ -1,11 +1,37 @@
-name: Build and Publish Docker Image
+name: Test and Publish Docker Image
 
 on:
+  push:
+  pull_request:
   release:
     types: [published]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Run tests
+        run: bun run test
+
   docker:
+    if: github.event_name == 'release'
+    needs: test
     runs-on: ubuntu-latest
 
     permissions:

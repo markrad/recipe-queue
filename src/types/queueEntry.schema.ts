@@ -9,9 +9,9 @@ export const QueueStatusSchema = z.enum([
 
 export const QueueEntrySchema: z.ZodType<QueueEntry> = z.object({
     id: z.string().uuid(),
-    url: z.string().url().refine((url) => ['http', 'https'].includes(new URL(url).protocol), 'Must be protocol HTTP or HTTPS'),
+    url: z.string().url().refine((url) => ['http:', 'https:'].includes(new URL(url).protocol), 'Must be protocol HTTP or HTTPS'),
     status: QueueStatusSchema,
-    submittedAt: z.iso.datetime().transform((d) => new Date(d)),
+    submittedAt: z.union([z.iso.datetime().transform((d) => new Date(d)), z.date()]),
     mealieSlug: z.string().optional(),
     error: z.string().optional(),
 });
