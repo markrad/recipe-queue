@@ -53,7 +53,7 @@ give the Muse processor a way through that check as well, such as a
 Cloudflare service token, or keep the API path under the token check
 instead of the browser login.
 
-## Muse processor, still to be configured
+## Muse processor
 
 Once the tunnel address is known, a scheduled Muse check will poll
 `GET /queue`, import new links with the Facebook Reel to Mealie workflow,
@@ -62,4 +62,4 @@ times, ingredient count, and instruction count. If a Reel needs a signed-in
 video check and a one-time code, that entry stays pending until you
 approve the code.
 
-You need to your AI to do this. Any AI should be fine. I used Muse since it seemed highly unlikely that Meta would ever block their own UI from Facebook.
+You need an AI to do this. Any AI should be fine. I used Muse since it seemed highly unlikely that Meta would ever block their own AI from Facebook.
