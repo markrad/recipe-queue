@@ -1,4 +1,7 @@
 # Recipe queue server
+![GitHub Release](https://img.shields.io/github/v/release/markrad/recipe-queue)
+![GitHub License](https://img.shields.io/github/license/markrad/recipe-queue)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/markrad/recipe-queue/docker-image.yml)
 
 A small Bun + TypeScript + Express + Pug app that queues Facebook Reel
 links for later import into Mealie.
